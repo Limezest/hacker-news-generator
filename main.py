@@ -1,25 +1,21 @@
-# -*- coding: utf-8 -*-
-"""
-bq query --format csv --use_legacy_sql=false 'SELECT title FROM `bigquery-public-data.hacker_news.stories` where score > 100' > hn_title.csv
-gcloud run deploy --allow-unauthenticated --source=.
-"""
 import markovify
-from random import sample
+import random
+
 from flask import render_template
 
 BACKGROUND_COLORS = [
-    "pink",
-    "rose",
-    "indigo",
-    "fuchsia",
-    "purple",
-    "zinc",
-    "orange",
-    "green",
-    "emerald",
-    "teal",
     "cyan",
+    "emerald",
+    "fuchsia",
+    "green",
+    "indigo",
+    "orange",
+    "pink",
+    "purple",
+    "rose",
     "sky",
+    "teal",
+    "zinc",
 ]
 
 
@@ -30,7 +26,7 @@ text_model = markovify.NewlineText(text, state_size=3)
 
 
 def title_bot(request):
-    color1, color2 = sample(
+    color1, color2 = random.sample(
         BACKGROUND_COLORS,
         2,
     )
