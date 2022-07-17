@@ -25,7 +25,7 @@ with open("hn_title.csv") as f:
 text_model = markovify.NewlineText(text, state_size=3)
 
 
-def title_bot(request):
+def serve_root(request):
     color1, color2 = random.sample(
         BACKGROUND_COLORS,
         2,
