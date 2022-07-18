@@ -8,7 +8,7 @@ bq query --format csv --use_legacy_sql=false 'SELECT title FROM `bigquery-public
 ```shell
 # Dev locally
 pip install -r requirements.txt
-./venv/bin/functions-framework --target serve_root --debug
+./venv/bin/functions-framework --target route_request --debug
 ```
 
 ```shell

@@ -1,7 +1,7 @@
 import markovify
 import random
 
-from flask import render_template
+from flask import render_template, send_from_directory
 
 BACKGROUND_COLORS = [
     "cyan",
@@ -23,6 +23,21 @@ with open("hn_title.csv") as f:
     text = f.read()
 
 text_model = markovify.NewlineText(text, state_size=3)
+
+
+def route_request(request):
+    if "favicon" in request.path:
+        return serve_favicon()
+
+    return serve_root(request)
+
+
+def serve_favicon():
+    return send_from_directory(
+        "templates",
+        "favicon.ico",
+        mimetype="image/vnd.microsoft.icon",
+    )
 
 
 def serve_root(request):
